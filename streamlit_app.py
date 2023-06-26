@@ -47,8 +47,7 @@ def main():
                 max_tokens=100,
                 temperature=0.7,
                 n=1,
-                stop=None,
-                log_level="info"
+                stop=None
             )
 
             st.write("Respuesta:", respuesta.choices[0].text)
