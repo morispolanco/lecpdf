@@ -28,7 +28,7 @@ def formular_pregunta(pregunta, texto):
         engine="davinci",
         prompt=entrada,
         max_tokens=100,
-        temperature=0.7,
+        temperature=0,
         n=1,
         stop=None
     )
