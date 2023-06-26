@@ -21,6 +21,19 @@ def dividir_texto(texto, tamaño_fragmento):
         fragmentos.append(texto[i:i+tamaño_fragmento])
     return fragmentos
 
+# Función para formular la pregunta utilizando GPT-3
+def formular_pregunta(pregunta, texto):
+    entrada = pregunta + " [SEP] " + texto
+    respuesta = openai.Completion.create(
+        engine="text-davinci-003",
+        prompt=entrada,
+        max_tokens=100,
+        temperature=0.7,
+        n=1,
+        stop=None
+    )
+    return respuesta.choices[0].text.strip()
+
 # Aplicación principal
 def main():
     st.title("Aplicación de Lectura de PDF y Preguntas y Respuestas")
@@ -40,17 +53,10 @@ def main():
         pregunta = st.text_input("Ingrese su pregunta")
 
         if st.button("Preguntar"):
-            # Utilizar GPT-3 para responder la pregunta
-            respuesta = openai.Completion.create(
-                engine="davinci",
-                prompt=pregunta,
-                max_tokens=100,
-                temperature=0.7,
-                n=1,
-                stop=None
-            )
+            # Formular la pregunta utilizando GPT-3
+            respuesta = formular_pregunta(pregunta, texto)
 
-            st.write("Respuesta:", respuesta.choices[0].text)
+            st.write("Respuesta:", respuesta)
 
 if __name__ == "__main__":
     main()
