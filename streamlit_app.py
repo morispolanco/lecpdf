@@ -47,9 +47,6 @@ def main():
                 temperature=0.7,
                 n=1,
                 stop=None,
-                temperature=0.7,
-                n=1,
-                stop=None,
                 log_level="info"
             )
             
