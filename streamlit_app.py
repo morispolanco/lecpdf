@@ -23,9 +23,9 @@ def dividir_texto(texto, tamaño_fragmento):
 
 # Función para formular la pregunta utilizando GPT-3
 def formular_pregunta(pregunta, texto):
-    entrada = pregunta + " [SEP] " + texto
+    entrada = pregunta + " [SEP] " + texto[:4000]  # Limitar el contexto a 4000 tokens
     respuesta = openai.Completion.create(
-        engine="text-davinci-003",
+        engine="davinci",
         prompt=entrada,
         max_tokens=100,
         temperature=0.7,
