@@ -1,6 +1,7 @@
 import streamlit as st
 import pdfplumber
 import openai
+import os
 
 # Load GPT-3 API key from secrets
 openai.api_key = os.getenv("OPENAI_API_KEY")
